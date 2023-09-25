@@ -8,6 +8,11 @@ Du skal finde elementet med id="yellowFigure" og console logge det.
 */
 
 // din kode her
+let redFig = document.getElementById("redFigure");
+console.log(redFig);
+
+let yellowFig = document.getElementById("yellowFigure");
+console.log(yellowFig);
 
 
 /* opgave 1.2
@@ -17,7 +22,8 @@ farven på elementerne skal være blå. brug evt. elelement.style.backgroundColo
 
 
 // din kode her
-
+redFig.style.backgroundColor = "blue";
+yellowFig.style.backgroundColor = "blue";
 
 
 /* opgave 2.1
@@ -28,7 +34,8 @@ Du skal oprette følgende HTML elementer i Elementet med id opgaveTwo.
 
 
 // din kode her
-
+let opgTwo = document.getElementById("opgaveTwo");
+opgTwo.innerHTML = "<h2>Opgave 2.1 løsning</h2><p>Jeg har løst opgave 2.1</p>";
 
 // opgave 3 liveHTML lists
 /* opgave 3.1
@@ -36,7 +43,8 @@ Du skal finde alle elementer med klassen purpleFigures og console logge resultat
 */
 
 // din kode her
-
+let purpleFigs = document.getElementsByClassName("purpleFigures");
+console.log(purpleFigs);
 
 /* opgave 3.2
 Du skal finde alle elementer med klassen purpleFigures og bruge array.from() til at konvertere listen
@@ -45,6 +53,14 @@ array.from beskrivelse HER: https://developer.mozilla.org/en-US/docs/Web/JavaScr
 */
 
 // din kode her
+let purpleFigs2 = document.getElementsByClassName("purpleFigures");
+
+let purpleFigsArray = Array.from(purpleFigs2);
+
+purpleFigsArray.map(function(purpleFig) {
+  purpleFig.style.backgroundColor = "red";
+});
+
 
 
 /* opgave 3.3
@@ -54,7 +70,19 @@ myElement.children[0].innerHTML til at ændre 1. child elements inner html.
 
 
 // din kode her
+// Konverter HTMLCollection til et array
 
+
+// Gennemgå hvert "purpleFigures" element i arrayet
+purpleFigsArray.forEach(function(purpleFig) {
+  // Find det første <h3> element inde i "purpleFigures"
+  let h3Element = purpleFig.querySelector("h3");
+
+  // Ændre tekstindholdet til "RED"
+  if (h3Element) {
+    h3Element.innerHTML = "RED";
+  }
+});
 
 
 /* opgave 4
@@ -70,7 +98,25 @@ const myData = {
 };
 
 
-// din kode her
+// container
+const container = document.getElementById('opgaveFour');
+
+// overskrift (semantic element til overskrift)
+const heading = document.createElement('h1');
+heading.textContent = myData.name; // Indstil overskriftens tekst til dyrenavnet
+
+//  billedelement
+const image = document.createElement('img');
+image.src = myData.image; // Indstil billedets kilde
+
+// element til beskrivelsen
+const description = document.createElement('p');
+description.textContent = myData.description; // Indstil beskrivelsens tekst
+
+// Tilføjelse af de oprettede elementer til containeren
+container.appendChild(heading);
+container.appendChild(image);
+container.appendChild(description);
 
 
 
